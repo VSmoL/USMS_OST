@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Script Tutorials" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>HTML5 Audio player with playlist | Script Tutorials</title>
+
+    <!-- add styles and scripts -->
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="general.js"></script>
+    
+<script>
+  $(function() {
+    $( "#slider" ).slider();
+  });
+  </script>
+    
+</head>
+<body>
+    
+    <button id="das" onclick="soitabiisi()">Alota se tonin kikkeli</button>
+    <button id="das" onclick="lopetabiisi()">Lopeta se vitun biisi</button>
+    
+    <div class="example">
+
+        <audio id="soitin" preload="auto" >
+            <source src="data/Pokop.mp3" type="audio/mpeg">
+        </audio>
+
+        
+        
+    </div>
+    
+    <div id="slider"></div>
+    
+</body>
+</html>
