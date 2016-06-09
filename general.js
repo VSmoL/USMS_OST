@@ -58,35 +58,37 @@ function listFullPlaylist(){
 }
 
 function addSongYTPlaylist(){
-//    var xmlhttp = new XMLHttpRequest();
-//    var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=snippet&key=AIzaSyA17v8PuNBsIwgbxg6D78iHV-w7_dYyXPw&access_token=ya29.Ci_8AqkTZPMQGBjhYpeAoyZnZMHKdOs618SO4E7pGtk9SpSSThgXQ9a1glvCePDkyw";
-//
-//    xmlhttp.onreadystatechange = function() {
-//        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-//            var playlist = JSON.parse(xmlhttp.responseText);
-//            console.log(playlist);
-////            for (song in playlist.items){
-////                fullPlaylist.push(playlist.items[song]);
-////            }
-//            
-////            var pageToken = playlist.nextPageToken;
-////            if(pageToken != null){
-////                getPlaylistList(pageToken);
-////            }
-////            else{
-////                listFullPlaylist();
-////            }
-//        }
-//    };
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=snippet&key=AIzaSyA17v8PuNBsIwgbxg6D78iHV-w7_dYyXPw&access_token=ya29.Ci_8AqkTZPMQGBjhYpeAoyZnZMHKdOs618SO4E7pGtk9SpSSThgXQ9a1glvCePDkyw";
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var playlist = JSON.parse(xmlhttp.responseText);
+            console.log(playlist);
+//            for (song in playlist.items){
+//                fullPlaylist.push(playlist.items[song]);
+//            }
+            
+//            var pageToken = playlist.nextPageToken;
+//            if(pageToken != null){
+//                getPlaylistList(pageToken);
+//            }
+//            else{
+//                listFullPlaylist();
+//            }
+        }
+    };
     
+    console.log(url);
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Authorization", "Bearer ya29.Ci_8Ajirt9LgT2X-IYGqsAs4WVw1gXilAEUEd5TAZeKJUFA6Lr-lsReYltPJKFd6Fg");
+    xmlhttp.send();
+}
+
+function googleAccAuth(){      
     window.location = "https://accounts.google.com/o/oauth2/auth"+
     "?client_id=528931390081-dqk00d0834e840k53n5dg76ibq3bc7s0.apps.googleusercontent.com"+
     "&redirect_uri=http://vsmol.github.io/USMS_OST/"+
     "&scope=https://www.googleapis.com/auth/youtube&response_type=token";
-    
-//    console.log(url);
-//    xmlhttp.open("POST", url, true);
-//    xmlhttp.setRequestHeader("Authorization", "Bearer ya29.Ci_8Ajirt9LgT2X-IYGqsAs4WVw1gXilAEUEd5TAZeKJUFA6Lr-lsReYltPJKFd6Fg");
-//    xmlhttp.send();
 }
 
