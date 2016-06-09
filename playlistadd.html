@@ -12,18 +12,7 @@
     <script type="text/javascript" src="general.js"></script>
     
 <script>
-    var xmlhttp = new XMLHttpRequest();
-    var url = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=PL5edKOlqgjC18JMjCTLOwEqhf2Sq85fwK&key=AIzaSyCrKqo0G3kHJo7B5zfX4ftykazPYG8GReQ";
-
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var myArr = JSON.parse(xmlhttp.responseText);
-            console.log(myArr);
-        }
-    };
-    console.log(url);
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
+    
   </script>
     
 </head>
