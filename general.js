@@ -79,7 +79,7 @@ function addSongYTPlaylist(){
 //        }
 //    };
     
-    window.location = "https://accounts.google.com/o/oauth2/auth?client_id=1084945748469-eg34imk572gdhu83gj5p0an9fut6urp5.apps.googleusercontent.com&redirect_uri=http://vsmol.github.io/USMS_OST&scope=https://www.googleapis.com/auth/youtube&response_type=token";
+    window.location = "https://accounts.google.com/o/oauth2/auth?client_id=1084945748469-eg34imk572gdhu83gj5p0an9fut6urp5.apps.googleusercontent.com&redirect_uri=http://vsmol.github.io/USMS_OST/&scope=https://www.googleapis.com/auth/youtube&response_type=token";
     
 //    console.log(url);
 //    xmlhttp.open("POST", url, true);
