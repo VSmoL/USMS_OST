@@ -15,7 +15,7 @@ function lopetabiisi(){
 function getPlaylistList(nextPageToken){
     console.log(nextPageToken);
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&pageToken="+nextPageToken+"&playlistId=PL5edKOlqgjC17Gd0osqaxApwF5kW738SV&key=AIzaSyCrKqo0G3kHJo7B5zfX4ftykazPYG8GReQ";
+    var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&pageToken="+nextPageToken+"&playlistId=PL5edKOlqgjC17Gd0osqaxApwF5kW738SV&key=AIzaSyA17v8PuNBsIwgbxg6D78iHV-w7_dYyXPw";
 
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -59,7 +59,7 @@ function listFullPlaylist(){
 
 function addSongYTPlaylist(){
 //    var xmlhttp = new XMLHttpRequest();
-//    var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=snippet&key=AIzaSyCrKqo0G3kHJo7B5zfX4ftykazPYG8GReQ&access_token=ya29.Ci_8AqkTZPMQGBjhYpeAoyZnZMHKdOs618SO4E7pGtk9SpSSThgXQ9a1glvCePDkyw";
+//    var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&fields=snippet&key=AIzaSyA17v8PuNBsIwgbxg6D78iHV-w7_dYyXPw&access_token=ya29.Ci_8AqkTZPMQGBjhYpeAoyZnZMHKdOs618SO4E7pGtk9SpSSThgXQ9a1glvCePDkyw";
 //
 //    xmlhttp.onreadystatechange = function() {
 //        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -79,11 +79,14 @@ function addSongYTPlaylist(){
 //        }
 //    };
     
-    window.location = "https://accounts.google.com/o/oauth2/auth?client_id=1084945748469-eg34imk572gdhu83gj5p0an9fut6urp5.apps.googleusercontent.com&redirect_uri=http://vsmol.github.io/USMS_OST/&scope=https://www.googleapis.com/auth/youtube&response_type=token";
+    window.location = "https://accounts.google.com/o/oauth2/auth"+
+    "?client_id=1084945748469-eg34imk572gdhu83gj5p0an9fut6urp5.apps.googleusercontent.com"+
+    "&redirect_uri=http://vsmol.github.io/USMS_OST/"+
+    "&scope=https://www.googleapis.com/auth/youtube&response_type=token";
     
 //    console.log(url);
 //    xmlhttp.open("POST", url, true);
-////    xmlhttp.setRequestHeader("Authorization", "Bearer ");
+//    xmlhttp.setRequestHeader("Authorization", "Bearer ya29.Ci_8Ajirt9LgT2X-IYGqsAs4WVw1gXilAEUEd5TAZeKJUFA6Lr-lsReYltPJKFd6Fg");
 //    xmlhttp.send();
 }
 
