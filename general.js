@@ -168,7 +168,6 @@ function addSongYTPlaylist(){
                 else if(themeRBtn){
                     localStorage.setItem("themeSongGiven", true);
                     localStorage.setItem("dayAddedSong", Date.next().monday().toString('dd.MM.yyyy'));
-//                    localStorage.setItem("dayAddedSong", Date.today().toString('dd.MM.yyyy'))
                 }
             }
             if (xmlhttp.readyState == 4 && xmlhttp.status == 401) {
@@ -212,10 +211,18 @@ $(document).ready(function() {
     $(".close").click(function(){
         $("#myModal").hide();
     });
-//    if((localStorage.getItem("dayAddedSong") == Date.today()){
-//        localStorage.removeItem("themeSongGiven");
-//        localStorage.removeItem("weeklySongGiven");
-//    }
+    if(localStorage.getItem("dayAddedSong") == Date.today().toString('dd.MM.yyyy')){
+//    if(localStorage.getItem("dayAddedSong") == Date.next().monday().toString('dd.MM.yyyy')){
+        
+        console.log("Menee tyhjentää");
+        console.log(localStorage.getItem("dayAddedSong"));
+        console.log(Date.today().toString('dd.MM.yyyy'));
+
+
+        localStorage.removeItem("themeSongGiven");
+        localStorage.removeItem("weeklySongGiven");
+        localStorage.removeItem("dayAddedSong");
+    }
     console.log((Date.today() - Date.today().next().tuesday()) / (1000 * 3600 * 24));
 
 });
@@ -223,11 +230,6 @@ $(document).ready(function() {
 function openAddPlaylist(){
     $("#myModal").show();
     
-    if(localStorage.getItem("dayAddedSong") == Date.today().toString('dd.MM.yyyy')){
-        localStorage.removeItem("themeSongGiven");
-        localStorage.removeItem("weeklySongGiven");
-        localStorage.removeItem("dayAddedSong");
-    }
     if(localStorage.getItem("weeklySongGiven") && localStorage.getItem("themeSongGiven")){
         $("#ytLink").attr('disabled',true);
         $("#weekly").attr('disabled',true);
