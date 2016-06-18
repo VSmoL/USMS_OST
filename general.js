@@ -28,14 +28,11 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady(event) {
     player.cueVideoById(vidId, 0, "Large");
 //    event.target.playVideo();
-    songIndex += 1;
-
 //    getPlaylistList('');
 }
 
 var done = false;
 function onPlayerStateChange(event) {
-    console.log(event);
     if (event.data == YT.PlayerState.PLAYING && !done) {
       
     }
@@ -48,11 +45,19 @@ function stopVideo() {
 }
 
 function changeSong(){
-    vidId = fullPlaylist[songIndex].snippet.resourceId.videoId
+    songIndex += 1;
+    if(songIndex >= fullPlaylist.length){
+        songIndex = 0;
+    }
+    
+    console.log(fullPlaylist);
+    
+    
+    vidId = fullPlaylist[songIndex].snippet.resourceId.videoId;
+        console.log(songIndex);
+
     player.loadVideoById(vidId, 0, "Large");
 //    player.playVideo();
-    songIndex += 1;
-
 }
 
 function randomizePlaylist(){
@@ -116,13 +121,19 @@ function listFullPlaylist(){
             var songName = fullPlaylist[song].snippet.title;
             var videoImgURL = fullPlaylist[song].snippet.thumbnails.default.url;
 
-            playlistContent.push("<li><div data-videoid='"+videoId+"'>'"+songName+"'</div> <a href='https://www.youtube.com/embed/"+videoId+"?enablejsapi=1' target='utube1'><img src='"+videoImgURL+"' /></a></li>"); 
+            playlistContent.push("<li><div id='YTvideo' data-listIndex="+song+" data-videoid='"+videoId+"'>'"+songName+"'</div> <a href='https://www.youtube.com/embed/"+videoId+"?enablejsapi=1' target='utube1'><img src='"+videoImgURL+"' /></a></li>"); 
         }
     }
     playlistContent.push("</ul>");
     document.getElementById("YTplaylist").innerHTML = playlistContent.join("");
     
     vidId = fullPlaylist[0].snippet.resourceId.videoId;
+    
+    $("#YTplaylist ul li").click(function(){
+        var pressedVideoId = $(this).children().attr("data-videoid");
+        songIndex = parseInt($(this).children().attr("data-listIndex"));
+        player.cueVideoById(pressedVideoId, 0, "Large");
+    });
 }
 
 function addSongYTPlaylist(){
@@ -214,12 +225,6 @@ $(document).ready(function() {
     if(localStorage.getItem("dayAddedSong") == Date.today().toString('dd.MM.yyyy')){
 //DEBUG
 //    if(localStorage.getItem("dayAddedSong") == Date.next().monday().toString('dd.MM.yyyy')){
-        
-        console.log("Menee tyhjentää");
-        console.log(localStorage.getItem("dayAddedSong"));
-        console.log(Date.today().toString('dd.MM.yyyy'));
-
-
         localStorage.removeItem("themeSongGiven");
         localStorage.removeItem("weeklySongGiven");
         localStorage.removeItem("dayAddedSong");
