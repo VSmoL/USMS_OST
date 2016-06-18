@@ -49,15 +49,9 @@ function changeSong(){
     if(songIndex >= fullPlaylist.length){
         songIndex = 0;
     }
-    
-    console.log(fullPlaylist);
-    
-    
     vidId = fullPlaylist[songIndex].snippet.resourceId.videoId;
-        console.log(songIndex);
-
     player.loadVideoById(vidId, 0, "Large");
-//    player.playVideo();
+    player.playVideo();
 }
 
 function randomizePlaylist(){
@@ -121,7 +115,7 @@ function listFullPlaylist(){
             var songName = fullPlaylist[song].snippet.title;
             var videoImgURL = fullPlaylist[song].snippet.thumbnails.default.url;
 
-            playlistContent.push("<li><div id='YTvideo' data-listIndex="+song+" data-videoid='"+videoId+"'>'"+songName+"'</div> <a href='https://www.youtube.com/embed/"+videoId+"?enablejsapi=1' target='utube1'><img src='"+videoImgURL+"' /></a></li>"); 
+            playlistContent.push("<li><div id='YTvideo' data-listIndex="+song+" data-videoid='"+videoId+"'>'"+songName+"'</div><img src='"+videoImgURL+"' /></a></li>"); 
         }
     }
     playlistContent.push("</ul>");
@@ -132,14 +126,11 @@ function listFullPlaylist(){
     $("#YTplaylist ul li").click(function(){
         var pressedVideoId = $(this).children().attr("data-videoid");
         songIndex = parseInt($(this).children().attr("data-listIndex"));
-        player.cueVideoById(pressedVideoId, 0, "Large");
+        player.loadVideoById(pressedVideoId, 0, "Large");
     });
 }
 
 function addSongYTPlaylist(){
-    
-    console.log();
-    
     var video_id = document.getElementById("ytLink").value.split('v=')[1];
     var weeklyRBtn = document.getElementById("weekly").checked;
     var themeRBtn = document.getElementById("theme").checked;
