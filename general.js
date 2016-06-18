@@ -188,7 +188,7 @@ function googleAccAuth(){
     window.location = "https://accounts.google.com/o/oauth2/auth"+
     "?client_id=528931390081-dqk00d0834e840k53n5dg76ibq3bc7s0.apps.googleusercontent.com"+
 //    "&redirect_uri=http://vsmol.github.io/USMS_OST/"+
-    "&redirect_uri=http://localhost/USMSOST/"+
+    "&redirect_uri="+location.href.replace(location.hash,"")+
     "&scope=https://www.googleapis.com/auth/youtube&response_type=token";
 }
 
