@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="y4tut-8UvT2kv_KkVGl6RPT2qompwC2oFznzHaGqlX0" />
+<!--    <meta name="google-site-verification" content="y4tut-8UvT2kv_KkVGl6RPT2qompwC2oFznzHaGqlX0" />-->
     <meta charset="utf-8" />
     <meta name="author" content="Script Tutorials" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>HTML5 Audio player with playlist | Script Tutorials</title>
 
     <!-- add styles and scripts -->
-    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="js/date-fi-FI.js"></script>
     <script type="text/javascript" src="general.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     
     <script>
         getPlaylistList('');
 //        addSongYTPlaylist();
+//        getAuth();
     </script>
     
 </head>
 <body>
     
-<!--
-    <button id="das" onclick="soitabiisi()">Alota se tonin kikkeli</button>
-    <button id="das" onclick="lopetabiisi()">Lopeta se vitun biisi</button>
--->
+<div id="header">
+    <button id="YTAuth" onclick="getAuth()">Add list</button>
+    <button id="YTAuth" onclick="randomizePlaylist()">Shuffle Playlist</button>
+</div>
     
-    <div class="example">
+    <div id="myModal" class="modal">
 
-<!--
-        <audio id="soitin" preload="auto" >
-            <source src="data/Pokop.mp3" type="audio/mpeg">
-        </audio>
--->
+      <!-- Modal content -->
+      <div class="modal-content" >
+        <span class="close">×</span>
+        <div id="popupContent">
+            Anna Youtube linkki:
+            <input id="ytLink" type="text" name="ytLink"><br>
+            <input id="weekly" type="radio" name="theme" value="false"><div id="weeklyText">Viikottainen biisi</div><br>
+            <input id="theme" type="radio" name="theme" value="true"><span id="themeText">Teema biisi</span><br>
+            <div id="weeklyThemeGenre">This week theme: </div>
+            <button id="submitYTPLsong" onclick="addSongYTPlaylist()">Submit</button>
+        </div>
+      </div>
 
-        <button id="YTAuth" onclick="googleAccAuth()"></button>
+    </div>
+
+    <div id="content">
         
+        <div id="YTplaylist">
+        </div>
+        <div id="YTPlayer">
+        <div id="player"></div>
+        </div>
     </div>
-    
-            <iframe width="50%" height="400" src="https://www.youtube.com/embed/Lvsydl-Zwvc" frameborder="0" allowfullscreen name="utube1"></iframe>
-    <div id=YTplaylist>
-    
+    <div id="footer">
+        <img src="img/play.png" id="play-button">
+        <img src="img/pause.png" id="pause-button">
     </div>
-    
-    
 </body>
 </html>
