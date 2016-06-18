@@ -223,7 +223,7 @@ $(document).ready(function() {
 function openAddPlaylist(){
     $("#myModal").show();
     
-    if(localStorage.getItem("dayAddedSong") == Date.next().monday().toString('dd.MM.yyyy')){
+    if(localStorage.getItem("dayAddedSong") == Date.today().toString('dd.MM.yyyy')){
         localStorage.removeItem("themeSongGiven");
         localStorage.removeItem("weeklySongGiven");
         localStorage.removeItem("dayAddedSong");
