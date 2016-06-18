@@ -172,7 +172,7 @@ function addSongYTPlaylist(){
                     localStorage.setItem("dayAddedSong", Date.next().monday().toString('dd.MM.yyyy'));
                 }
             }
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 401) {
+            if (xmlhttp.readyState == 4 && (xmlhttp.status == 401 || xmlhttp.status == 403)) {
                 alert("Bad Login");
                 window.location = location.href.replace(location.hash,"");
             }
