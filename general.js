@@ -212,6 +212,7 @@ $(document).ready(function() {
         $("#myModal").hide();
     });
     if(localStorage.getItem("dayAddedSong") == Date.today().toString('dd.MM.yyyy')){
+//DEBUG
 //    if(localStorage.getItem("dayAddedSong") == Date.next().monday().toString('dd.MM.yyyy')){
         
         console.log("Menee tyhjentää");
@@ -223,8 +224,6 @@ $(document).ready(function() {
         localStorage.removeItem("weeklySongGiven");
         localStorage.removeItem("dayAddedSong");
     }
-    console.log((Date.today() - Date.today().next().tuesday()) / (1000 * 3600 * 24));
-
 });
 
 function openAddPlaylist(){
@@ -236,15 +235,15 @@ function openAddPlaylist(){
         $("#theme").attr('disabled',true);
         $("#submitYTPLsong").attr('disabled',true);
         
-        $("#weeklyText").append(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
-        $("#themeText").append(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
+        $("#weeklyText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
+        $("#themeText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
     }
     else if(localStorage.getItem("weeklySongGiven")){
         $("#weekly").attr('disabled',true);
-        $("#weeklyText").append(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
+        $("#weeklyText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
     }
     else if(localStorage.getItem("themeSongGiven")){
         $("#theme").attr('disabled',true);
-        $("#themeText").append(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
+        $("#themeText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
     }
 }
