@@ -8,16 +8,10 @@
     <title>HTML5 Audio player with playlist | Script Tutorials</title>
 
     <!-- add styles and scripts -->
-    <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
-    <script type="text/javascript" src="js/date-fi-FI.js"></script>
-    <script type="text/javascript" src="general.js"></script>
+
     <link rel="stylesheet" href="css/style.css">
     
-    <script>
-        getPlaylistList('');
-//        addSongYTPlaylist();
-//        getAuth();
-    </script>
+
     
 </head>
 <body>
@@ -34,11 +28,18 @@
         <span class="close">×</span>
         <div id="popupContent">
             Anna Youtube linkki:
-            <input id="ytLink" type="text" name="ytLink"><br>
+            <input id="ytLink" type="text" name="ytLink" size="50"><br>
             <input id="weekly" type="radio" name="theme" value="false"><div id="weeklyText">Viikottainen biisi<span></span></div><br>
             <input id="theme" type="radio" name="theme" value="true"><div id="themeText">Teema biisi<span></span></div><br>
-            <div id="weeklyThemeGenre">This week theme: </div>
-            <button id="submitYTPLsong" onclick="addSongYTPlaylist()">Submit</button>
+            <div id="weeklyRandomNumber">This week theme: </div><br>
+            <button id="submitYTPLsong" onclick="addSongYTPlaylist()">Submit</button><br>
+            <div id="rules" style="text-align: center; width: 100%">
+            <h3>Säännöt</h3>
+            - Soittolistaan sallitaan vain pelien biisit.<br>
+            - Samaa biisiä ei saa laittaa toista kertaa.<br>
+            - Käyttäjä ei saa lisätä kuin yhden biisin samasta pelistä kerran kuukaudessa.<br>
+            - Käyttäjä ei saa lisätä kuin kaksi biisiä samasta sarjasta kerran kuukaudessa.<br>
+            </div>
         </div>
       </div>
 
@@ -57,4 +58,14 @@
         <img src="img/pause.png" id="pause-button">
     </div>
 </body>
+    <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/date-fi-FI.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js"></script>
+    <script type="text/javascript" src="general.js"></script>
+    <script>
+        getPlaylistList('');
+//        addSongYTPlaylist();
+//        getAuth();
+    </script>
 </html>

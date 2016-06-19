@@ -1,5 +1,6 @@
 var fullPlaylist = [];
 var weeklyTheme = ["joku", "joku toine", "joku kolmas"];
+var weeklyRandomNumber;
 var accessToken;
 
 var vidId;
@@ -7,6 +8,11 @@ var vidId;
 var songIndex = 0;
 
 var tag = document.createElement('script');
+
+var dbThemeIndex;
+var dbThemeDate
+
+google.load('visualization', '1');
 
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -213,17 +219,25 @@ $(document).ready(function() {
     $(".close").click(function(){
         $("#myModal").hide();
     });
-    if(localStorage.getItem("dayAddedSong") == Date.today().toString('dd.MM.yyyy')){
-//DEBUG
-//    if(localStorage.getItem("dayAddedSong") == Date.next().monday().toString('dd.MM.yyyy')){
+    //localStorage.setItem("dayAddedSong", Date.next().monday().toString('dd.MM.yyyy'));
+    console.log(Date.today().toString('dd.MM.yyyy'));
+    console.log(localStorage.getItem("dayAddedSong"));
+    
+    console.log(Date.today().compareTo(Date.parse(localStorage.getItem("dayAddedSong") || Date.today())));
+    if(Date.today().compareTo(Date.parse(localStorage.getItem("dayAddedSong") || Date.today())) >= 0){
         localStorage.removeItem("themeSongGiven");
         localStorage.removeItem("weeklySongGiven");
         localStorage.removeItem("dayAddedSong");
     }
+    Math.seedrandom(new Date().getWeek());
+    weeklyRandomNumber = Math.floor(Math.random() * (weeklyTheme.length - 0 + 1)) + 0;
 });
 
 function openAddPlaylist(){
     $("#myModal").show();
+    $("#ytLink").value = "";
+    
+    $("#weeklyRandomNumber").html("This week theme: " + weeklyTheme[weeklyRandomNumber]);
     
     if(localStorage.getItem("weeklySongGiven") && localStorage.getItem("themeSongGiven")){
         $("#ytLink").attr('disabled',true);
@@ -243,3 +257,70 @@ function openAddPlaylist(){
         $("#themeText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
     }
 }
+
+
+
+function getThemeAndDate(){
+      function drawTable() {
+        // Construct query
+        var query = "SELECT 'randomThemeIndex', 'dateTime' " +
+            "FROM 1xc_oss_X0jaRvLhXrbKzCtnZo26w8OaN2-7inaFU ";
+
+        console.log(query)
+          
+        var queryText = encodeURIComponent(query);
+        var gvizQuery = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq='+queryText);
+
+        // Send query and draw table with data in response
+        gvizQuery.send(function(response) {
+            dbThemeIndex = response.getDataTable().getValue(0, 0);
+            dbThemeDate = response.getDataTable().getValue(0, 1);
+            
+            console.log(dbThemeDate);
+            console.log(Date.today());
+            
+            if(Date.today().compareTo(Date.parse(dbThemeDate) || Date.today()) >= 0){
+                console.log("moi")
+                
+                var newDate = Date.next().monday().toString('dd.MM.yyyy');
+                var randomThemeIndex = Math.floor(Math.random() * 10) + 1;
+
+                var query2 = "UPDATE 1xc_oss_X0jaRvLhXrbKzCtnZo26w8OaN2-7inaFU SET 'randomThemeIndex' = 2, 'dateTime' = '3232' "+
+                "WHERE rowid = 1";
+                
+                var queryText2 = encodeURIComponent(query2);
+                var gvizQuery2 = new google.visualization.Query(                  'http://www.google.com/fusiontables/gvizdata?tq='+queryText2);
+                
+                console.log(gvizQuery2);
+                
+                //var updateQry = "UPDATE 1ATc4raFfvVSJriqgIS2qBHE5GQY4wioDA13LrQ5o SET col2 = 'aaa', col3='2015/01/01' WHERE ROWID IN (id1,id2,id3,...,idn)";
+                
+                gvizQuery2.send(function(response) {
+                       console.log(response);
+                });
+            }
+        });
+      }
+      google.setOnLoadCallback(drawTable);
+}
+
+//function in(){
+//      function drawTable() {
+//        // Construct query
+//        var query = "SELECT 'randomThemeIndex', 'dateTime' " +
+//            "FROM 1xc_oss_X0jaRvLhXrbKzCtnZo26w8OaN2-7inaFU ";
+//
+//        console.log(query)
+//          
+//        var queryText = encodeURIComponent(query);
+//        var gvizQuery = new google.visualization.Query(
+//            'http://www.google.com/fusiontables/gvizdata?tq='  + queryText);
+//
+//        // Send query and draw table with data in response
+//        gvizQuery.send(function(response) {
+//            dbThemeIndex = response.getDataTable().getValue(0, 0);
+//            dbThemeDate = response.getDataTable().getValue(0, 1);
+//        });
+//      }
+//      google.setOnLoadCallback(drawTable);
+//}
