@@ -1,5 +1,5 @@
 var fullPlaylist = [];
-var weeklyTheme = ["Boss Battle", "Main Menu", "Car game", "Final Fantasy", "Nintendo", "Space Theme", "Over 10 years old", "Ending", "Funny", "Sport", "Horror", "Arcade game", "Bad OST, but one good song", "Opening", "Fast-paced", "Fantasy", "Song you never forget", "Happy to go sleep after listening"];
+var weeklyTheme = ["Boss Battle", "Main Menu", "Car game", "Opening", "Nintendo", "Space Theme", "Over 10 years old", "Ending", "Funny", "Sport", "Horror", "Arcade game", "Bad OST, but one good song", "Final Fantasy", "Fast-paced", "Fantasy", "Song you never forget", "Happy to go sleep after listening"];
 var weeklyRandomNumber;
 var accessToken;
 
