@@ -1,5 +1,5 @@
 var fullPlaylist = [];
-var weeklyTheme = ["Boss Battle", "Main Menu", "Car game", "Opening", "Nintendo", "Space Theme", "Over 10 years old", "Ending", "Funny", "Sport game", "Horror game", "Arcade game", "Bad OST, but one good song", "Final Fantasy", "Fast-paced", "Fantasy", "Song you never forget", "Happy to go sleep after listening"];
+var weeklyTheme = ["Boss Battle", "Main Menu", "Car game", "Opening", "Nintendo", "Space Theme", "Over 10 years old", "Ending", "Funny", "Sport game", "Horror game", "Arcade game", "Bad OST, but one good song", "Final Fantasy", "Fast-paced", "Fantasy", "Song you never forget", "Happy to go sleep after listening", "Horror"];
 var weeklyRandomNumber;
 var accessToken;
 
@@ -23,7 +23,7 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '100%',
         width: '100%',
-        playerVars: { 'controls': 2, 'color':'white' },
+        playerVars: { 'controls': 2, 'color':'red' },
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -245,16 +245,16 @@ function openAddPlaylist(){
         $("#theme").attr('disabled',true);
         $("#submitYTPLsong").attr('disabled',true);
         
-        $("#weeklyText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
-        $("#themeText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
+        $("#weeklyText span").html(" (Unlocks: " + localStorage.getItem("dayAddedSong")+")");
+        $("#themeText span").html(" (Unlocks: " + localStorage.getItem("dayAddedSong")+")");
     }
     else if(localStorage.getItem("weeklySongGiven")){
         $("#weekly").attr('disabled',true);
-        $("#weeklyText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
+        $("#weeklyText span").html(" (Unlocks: " + localStorage.getItem("dayAddedSong")+")");
     }
     else if(localStorage.getItem("themeSongGiven")){
         $("#theme").attr('disabled',true);
-        $("#themeText span").html(" (Avautuu: " + localStorage.getItem("dayAddedSong")+")");
+        $("#themeText span").html(" (Unlocks: " + localStorage.getItem("dayAddedSong")+")");
     }
 }
 
