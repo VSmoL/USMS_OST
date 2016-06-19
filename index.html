@@ -8,7 +8,7 @@
     <title>HTML5 Audio player with playlist | Script Tutorials</title>
 
     <!-- add styles and scripts -->
-
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Changa|Orbitron|PT+Sans+Caption|Questrial|Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     
 
@@ -31,14 +31,18 @@
             <input id="ytLink" type="text" name="ytLink" size="50"><br>
             <input id="weekly" type="radio" name="theme" value="false"><div id="weeklyText">Viikottainen biisi<span></span></div><br>
             <input id="theme" type="radio" name="theme" value="true"><div id="themeText">Teema biisi<span></span></div><br>
-            <div id="weeklyRandomNumber">This week theme: </div><br>
-            <button id="submitYTPLsong" onclick="addSongYTPlaylist()">Submit</button><br>
+            <div id="weeklyRandomNumber">This week theme: </div>
+            <button id="submitYTPLsong" onclick="addSongYTPlaylist()" style="float: right;">Submit</button>
             <div id="rules" style="text-align: center; width: 100%">
             <h3>Säännöt</h3>
+            - Vain alkuperäiset biisit<br>
             - Soittolistaan sallitaan vain pelien biisit.<br>
             - Samaa biisiä ei saa laittaa toista kertaa.<br>
-            - Käyttäjä ei saa lisätä kuin yhden biisin samasta pelistä kerran kuukaudessa.<br>
+            - Biisin pituus max. 10min.<br>
+            - Käyttäjä ei saa lisätä kuin yhden biisin samasta pelistä kerran kuukaudessa.<br>  
             - Käyttäjä ei saa lisätä kuin kaksi biisiä samasta sarjasta kerran kuukaudessa.<br>
+            - Käyttäjä lisää kaksi biisiä viikossa, yhden teema biisin ja yhden vapaavalintaisen biisin.<br>
+            
             </div>
         </div>
       </div>

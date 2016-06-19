@@ -1,4 +1,10 @@
-html { height: 100%;     overflow: hidden;
+html { 
+    height: 100%;     
+    overflow: hidden;
+    font-family: 'Roboto Condensed', sans-serif;
+/*    font-family: 'Arimo', sans-serif;*/
+/*    font-family: 'PT Sans Caption', sans-serif;*/
+/*    font-family: 'Questrial', sans-serif;*/
 }
 body {
     height:100%;
@@ -45,6 +51,9 @@ body {
     height: calc(100% - 100px);
     
 }
+#YTplaylist ul li:hover{
+    background: rgba(255, 255, 255, 0.3);
+}
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -61,12 +70,12 @@ body {
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: rgba(23, 119, 1, 0.56);
+    background-color: rgba(23, 119, 1, 0.75);
     margin: auto;
     padding: 0;
     border: 1px solid #888;
     width: 30%;
-    height: 250px;
+    height: auto;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -120,4 +129,7 @@ body {
 }
 #popupContent{
     padding: 10px;
+}
+h3{
+    margin: 0;
 }
