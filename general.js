@@ -140,9 +140,9 @@ function addSongYTPlaylist(){
     var video_id = document.getElementById("ytLink").value.split('v=')[1];
     var weeklyRBtn = document.getElementById("weekly").checked;
     var themeRBtn = document.getElementById("theme").checked;
-    var videoSender = $("#videoSender option:selected" ).text();
+    var videoSender = document.getElementById("videoSender").selectedIndex;
     
-    if(videoSender == ""){
+    if(videoSender == "" && localStorage.getItem("senderName") != null){
         alert('Anna lähettäjä');
     }
     
@@ -185,6 +185,7 @@ function addSongYTPlaylist(){
                 var playlist = JSON.parse(xmlhttp.responseText);
                 getPlaylistList('');
                 $("#myModal").hide();
+                localStorage.setItem("senderName", videoSender);
                 if(weeklyRBtn){
                     localStorage.setItem("weeklySongGiven", true);
                     localStorage.setItem("dayAddedSong", Date.next().monday().toString('dd.MM.yyyy'));
@@ -235,6 +236,12 @@ $(document).ready(function() {
     $(".close").click(function(){
         $("#myModal").hide();
     });
+    $("#changeSender").click(function(){
+        $("#pickSender").show();
+        $("#savedSender").hide();
+        localStorage.removeItem("senderName");
+    });
+    
     //localStorage.setItem("dayAddedSong", Date.next().monday().toString('dd.MM.yyyy'));
     console.log(Date.today().toString('dd.MM.yyyy'));
     console.log(localStorage.getItem("dayAddedSong"));
@@ -252,6 +259,14 @@ $(document).ready(function() {
 function openAddPlaylist(){
     $("#myModal").show();
     $("#ytLink").value = "";
+    
+    if(localStorage.getItem("senderName") != null){
+        $("#senderName").html(localStorage.getItem("senderName"));
+        $("#pickSender").hide();
+    }
+    else{
+        $("#savedSender").hide();
+    }
     
     $("#weeklyRandomNumber").html("This week theme: " + weeklyTheme[weeklyRandomNumber]);
     

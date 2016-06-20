@@ -30,17 +30,23 @@
             Youtube link:
             <input id="ytLink" type="text" name="ytLink"><br>
             Lähettäjä: 
-            <select id="videoSender">
-                <option value="" selected></option>
-                <option value="Timo">Timo</option>
-                <option value="Toni">Toni</option>
-                <option value="Miko">Miko</option>
-                <option value="Matu">Matu</option>
-                <option value="Tommi">Tommi</option>
-                <option value="Sami">Sami</option>
-                <option value="Jesse">Jesse</option>
-                <option value="Joel">Joel</option>
-            </select>
+            <div id="pickSender">
+                <select id="videoSender">
+                    <option value="" selected></option>
+                    <option value="Timo">Timo</option>
+                    <option value="Toni">Toni</option>
+                    <option value="Miko">Miko</option>
+                    <option value="Matu">Matu</option>
+                    <option value="Tommi">Tommi</option>
+                    <option value="Sami">Sami</option>
+                    <option value="Jesse">Jesse</option>
+                    <option value="Joel">Joel</option>
+                </select>
+            </div>
+            <div id="savedSender">
+                <div id="senderName"></div>
+                <a id="changeSender" style="font-size: 12px; text-indent: 7em;">(Change)</a>
+            </div>
             <br>
             <input id="weekly" type="radio" name="theme" value="false"><div id="weeklyText">Weekly song<span></span></div><br>
             <input id="theme" type="radio" name="theme" value="true"><div id="themeText">Theme song<span></span></div><br>

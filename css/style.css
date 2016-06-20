@@ -139,3 +139,7 @@ h3{
     box-sizing:border-box;
     -moz-box-sizing:border-box;
 }
+a {
+    color: #22ffdd;
+    cursor: pointer;
+}
