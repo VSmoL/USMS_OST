@@ -134,3 +134,8 @@ body {
 h3{
     margin: 0;
 }
+#ytLink{
+    width:60%;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}

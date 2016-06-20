@@ -140,6 +140,11 @@ function addSongYTPlaylist(){
     var video_id = document.getElementById("ytLink").value.split('v=')[1];
     var weeklyRBtn = document.getElementById("weekly").checked;
     var themeRBtn = document.getElementById("theme").checked;
+    var videoSender = $("#videoSender option:selected" ).text();
+    
+    if(videoSender == ""){
+        alert('Anna lähettäjä');
+    }
     
     if(video_id == null || (!weeklyRBtn && !themeRBtn)){
         alert('Anna youtube link tai tyyppi');
@@ -152,9 +157,20 @@ function addSongYTPlaylist(){
         console.log(video_id);
         
         var xmlhttp = new XMLHttpRequest();
-        var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&part=snippet&key=AIzaSyA17v8PuNBsIwgbxg6D78iHV-w7_dYyXPw";
+        var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2Csnippet&key=AIzaSyA17v8PuNBsIwgbxg6D78iHV-w7_dYyXPw";
+        var videoNote;
+        
+        if(weeklyRBtn){
+            videoNote = "Weekly - "+ videoSender;
+        }
+        else if(themeRBtn){
+            videoNote = weeklyTheme[weeklyRandomNumber] + " - " + videoSender;
+        }
     
         var config = {
+             "contentDetails":{
+                 "note": videoNote
+             },
              "snippet": {
               "playlistId": "PL5edKOlqgjC0nWXzKtua0eTdXQhMvnCvZ",
               "resourceId": {
