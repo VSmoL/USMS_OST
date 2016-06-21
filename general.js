@@ -259,7 +259,7 @@ $(document).ready(function() {
 
 function openAddPlaylist(){
     $("#myModal").show();
-    $("#ytLink").value = "";
+    $("#ytLink").val('');
     
     if(localStorage.getItem("senderName") != null){
         $("#senderName").html(localStorage.getItem("senderName"));
