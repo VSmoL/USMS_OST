@@ -269,7 +269,7 @@ $(document).ready(function() {
 
 function openAddPlaylist(){
     $("#myModal").show();
-    $("#ytLink").value = "";
+    $("#ytLink").val('');
     
     if(localStorage.getItem("senderName") != null){
         $("#senderName").html(localStorage.getItem("senderName"));
@@ -329,6 +329,7 @@ function getComments(ytid){
     xmlhttp.send(params);
 }
 
+<<<<<<< HEAD
 function postComment(user, comment, ytid){
     var xmlhttp = new XMLHttpRequest();
     
@@ -346,3 +347,25 @@ function postComment(user, comment, ytid){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);
 }
+=======
+//function in(){
+//      function drawTable() {
+//        // Construct query
+//        var query = "SELECT 'randomThemeIndex', 'dateTime' " +
+//            "FROM 1xc_oss_X0jaRvLhXrbKzCtnZo26w8OaN2-7inaFU ";
+//
+//        console.log(query)
+//          
+//        var queryText = encodeURIComponent(query);
+//        var gvizQuery = new google.visualization.Query(
+//            'http://www.google.com/fusiontables/gvizdata?tq='  + queryText);
+//
+//        // Send query and draw table with data in response
+//        gvizQuery.send(function(response) {
+//            dbThemeIndex = response.getDataTable().getValue(0, 0);
+//            dbThemeDate = response.getDataTable().getValue(0, 1);
+//        });
+//      }
+//      google.setOnLoadCallback(drawTable);
+//}
+>>>>>>> origin/gh-pages
