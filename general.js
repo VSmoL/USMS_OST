@@ -255,10 +255,6 @@ $(document).ready(function() {
     
     
     //localStorage.setItem("dayAddedSong", Date.next().monday().toString('dd.MM.yyyy'));
-    console.log(Date.today().toString('dd.MM.yyyy'));
-    console.log(localStorage.getItem("dayAddedSong"));
-    
-    console.log(Date.today().compareTo(Date.parse(localStorage.getItem("dayAddedSong") || Date.today())));
     if(Date.today().compareTo(Date.parse(localStorage.getItem("dayAddedSong") || Date.today())) >= 0){
         localStorage.removeItem("themeSongGiven");
         localStorage.removeItem("weeklySongGiven");
@@ -345,6 +341,7 @@ function postComment(user, comment, ytid){
     };
 
     xmlhttp.open("POST", "php/postComments.php", true);
+    response.setHeader("Access-Control-Allow-Origin", "*");
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);
 }
