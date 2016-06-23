@@ -43,7 +43,7 @@ body {
     position: absolute;
     left: 500px;
     top: -50px;
-    height: calc(100% - 100px);
+    height: calc(100% - 300px);
     width: calc(100% - 490px);
 }
 #YTplaylist{
@@ -142,4 +142,16 @@ h3{
 a {
     color: #22ffdd;
     cursor: pointer;
+}
+#commentContent{
+    max-height: 175px;
+    min-height: 175px;
+    overflow-y: auto;
+}
+#commentContent ul{
+    -webkit-padding-start: 10px;
+    list-style: none;
+}
+#commentContent ul li div{
+    display: inline-block;
 }

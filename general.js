@@ -33,6 +33,7 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerReady(event) {
     player.cueVideoById(vidId, 0, "Large");
+    getComments(vidId);
 //    event.target.playVideo();
 //    getPlaylistList('');
 }
@@ -242,6 +243,16 @@ $(document).ready(function() {
         $("#savedSender").hide();
         localStorage.removeItem("senderName");
     });
+    $("#submitComment").click(function(){
+        var comment = document.getElementById("commentField").value;
+        if(comment != null && localStorage.getItem("senderName") != null && vidId != null){
+            postComment(localStorage.getItem("senderName"), comment ,vidId);
+        }
+        else{
+            alert('Valitse nimi, lisää kommentti tai video');                      
+        }
+    });
+    
     
     //localStorage.setItem("dayAddedSong", Date.next().monday().toString('dd.MM.yyyy'));
     console.log(Date.today().toString('dd.MM.yyyy'));
@@ -291,69 +302,49 @@ function openAddPlaylist(){
     }
 }
 
-
-
-function getThemeAndDate(){
-      function drawTable() {
-        // Construct query
-        var query = "SELECT 'randomThemeIndex', 'dateTime' " +
-            "FROM 1xc_oss_X0jaRvLhXrbKzCtnZo26w8OaN2-7inaFU ";
-
-        console.log(query)
-          
-        var queryText = encodeURIComponent(query);
-        var gvizQuery = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq='+queryText);
-
-        // Send query and draw table with data in response
-        gvizQuery.send(function(response) {
-            dbThemeIndex = response.getDataTable().getValue(0, 0);
-            dbThemeDate = response.getDataTable().getValue(0, 1);
+function getComments(ytid){
+    var xmlhttp = new XMLHttpRequest();
+    var params = "ytid="+ytid+"";
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            console.log(xmlhttp.response);
+            var arrayUser = xmlhttp.response.split('#');
+            arrayUser.shift();
+            console.log(arrayUser);
             
-            console.log(dbThemeDate);
-            console.log(Date.today());
-            
-            if(Date.today().compareTo(Date.parse(dbThemeDate) || Date.today()) >= 0){
-                console.log("moi")
-                
-                var newDate = Date.next().monday().toString('dd.MM.yyyy');
-                var randomThemeIndex = Math.floor(Math.random() * 10) + 1;
-
-                var query2 = "UPDATE 1xc_oss_X0jaRvLhXrbKzCtnZo26w8OaN2-7inaFU SET 'randomThemeIndex' = 2, 'dateTime' = '3232' "+
-                "WHERE rowid = 1";
-                
-                var queryText2 = encodeURIComponent(query2);
-                var gvizQuery2 = new google.visualization.Query(                  'http://www.google.com/fusiontables/gvizdata?tq='+queryText2);
-                
-                console.log(gvizQuery2);
-                
-                //var updateQry = "UPDATE 1ATc4raFfvVSJriqgIS2qBHE5GQY4wioDA13LrQ5o SET col2 = 'aaa', col3='2015/01/01' WHERE ROWID IN (id1,id2,id3,...,idn)";
-                
-                gvizQuery2.send(function(response) {
-                       console.log(response);
-                });
+            var commentContent = [];
+            commentContent.push('<ul>');
+            for (var x in arrayUser){
+                var splitContent = arrayUser[x].split("$");
+                commentContent.push('<li><div id="commentorName">'+splitContent[0]+':&nbsp;</div><div id="commentComment">'+splitContent[1]+'</div></li>');
             }
-        });
-      }
-      google.setOnLoadCallback(drawTable);
+            commentContent.push('</ul>');
+            document.getElementById("commentContent").innerHTML = commentContent.join("");
+        }
+        else {
+//            console.log(xmlhttp);   
+        }
+    };
+
+    xmlhttp.open("POST", "php/getComments.php", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(params);
 }
 
-//function in(){
-//      function drawTable() {
-//        // Construct query
-//        var query = "SELECT 'randomThemeIndex', 'dateTime' " +
-//            "FROM 1xc_oss_X0jaRvLhXrbKzCtnZo26w8OaN2-7inaFU ";
-//
-//        console.log(query)
-//          
-//        var queryText = encodeURIComponent(query);
-//        var gvizQuery = new google.visualization.Query(
-//            'http://www.google.com/fusiontables/gvizdata?tq='  + queryText);
-//
-//        // Send query and draw table with data in response
-//        gvizQuery.send(function(response) {
-//            dbThemeIndex = response.getDataTable().getValue(0, 0);
-//            dbThemeDate = response.getDataTable().getValue(0, 1);
-//        });
-//      }
-//      google.setOnLoadCallback(drawTable);
-//}
+function postComment(user, comment, ytid){
+    var xmlhttp = new XMLHttpRequest();
+    
+    var params = "user="+user+"&comment="+comment+"&ytid="+ytid+"";
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            getComments(vidId);
+        }
+        else {
+//            console.log(xmlhttp);   
+        }
+    };
+
+    xmlhttp.open("POST", "php/postComments.php", true);
+    xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xmlhttp.send(params);
+}

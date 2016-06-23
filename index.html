@@ -36,7 +36,7 @@
                     <option value="Timo">Timo</option>
                     <option value="Toni">Toni</option>
                     <option value="Miko">Miko</option>
-                    <option value="Matu">Matu</option>
+                    <option value="Matias">Matias</option>
                     <option value="Tommi">Tommi</option>
                     <option value="Sami">Sami</option>
                     <option value="Jesse">Jesse</option>
@@ -74,6 +74,14 @@
         </div>
         <div id="YTPlayer">
         <div id="player"></div>
+        <div id="userComments">
+            <div id="commentContent">
+
+            </div>
+            
+            <input id="commentField" style="width: calc(100% - 90px);" type="text"/>
+            <button id="submitComment">Comment</button>
+        </div>
         </div>
     </div>
     <div id="footer">
@@ -90,6 +98,8 @@
     <script type="text/javascript" src="general.js"></script>
     <script>
         getPlaylistList('');
+//        postComment();
+//        getComments("86IrPxjnLEA");
 //        addSongYTPlaylist();
 //        getAuth();
     </script>
