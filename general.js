@@ -141,14 +141,15 @@ function addSongYTPlaylist(){
     var video_id = document.getElementById("ytLink").value.split('v=')[1];
     var weeklyRBtn = document.getElementById("weekly").checked;
     var themeRBtn = document.getElementById("theme").checked;
-    var videoSender = document.getElementById("videoSender").selectedIndex;
-    
-    if(videoSender == "" && localStorage.getItem("senderName") != null){
-        alert('Anna lähettäjä');
+    if(localStorage.getItem("senderName") != null){
+        var videoSender = localStorage.getItem("senderName");
+    }
+    else{
+        var videoSender = document.getElementById("videoSender").value;
     }
     
-    if(video_id == null || (!weeklyRBtn && !themeRBtn)){
-        alert('Anna youtube link tai tyyppi');
+    if((video_id == null || (!weeklyRBtn && !themeRBtn)) || (videoSender == "" && localStorage.getItem("senderName") == null)){
+        alert('Anna youtube link, tyyppi ja lähettäjä');
     }  
     else{
         var ampersandPosition = video_id.indexOf('&');
@@ -274,6 +275,7 @@ function openAddPlaylist(){
     if(localStorage.getItem("senderName") != null){
         $("#senderName").html(localStorage.getItem("senderName"));
         $("#pickSender").hide();
+        $("#savedSender").show();
     }
     else{
         $("#savedSender").hide();
@@ -329,7 +331,6 @@ function getComments(ytid){
     xmlhttp.send(params);
 }
 
-<<<<<<< HEAD
 function postComment(user, comment, ytid){
     var xmlhttp = new XMLHttpRequest();
     
@@ -347,25 +348,3 @@ function postComment(user, comment, ytid){
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);
 }
-=======
-//function in(){
-//      function drawTable() {
-//        // Construct query
-//        var query = "SELECT 'randomThemeIndex', 'dateTime' " +
-//            "FROM 1xc_oss_X0jaRvLhXrbKzCtnZo26w8OaN2-7inaFU ";
-//
-//        console.log(query)
-//          
-//        var queryText = encodeURIComponent(query);
-//        var gvizQuery = new google.visualization.Query(
-//            'http://www.google.com/fusiontables/gvizdata?tq='  + queryText);
-//
-//        // Send query and draw table with data in response
-//        gvizQuery.send(function(response) {
-//            dbThemeIndex = response.getDataTable().getValue(0, 0);
-//            dbThemeDate = response.getDataTable().getValue(0, 1);
-//        });
-//      }
-//      google.setOnLoadCallback(drawTable);
-//}
->>>>>>> origin/gh-pages
