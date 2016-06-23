@@ -141,15 +141,14 @@ function addSongYTPlaylist(){
     var video_id = document.getElementById("ytLink").value.split('v=')[1];
     var weeklyRBtn = document.getElementById("weekly").checked;
     var themeRBtn = document.getElementById("theme").checked;
-    if(localStorage.getItem("senderName") != null){
-        var videoSender = localStorage.getItem("senderName");
-    }
-    else{
-        var videoSender = document.getElementById("videoSender").value;
+    var videoSender = document.getElementById("videoSender").selectedIndex;
+    
+    if(videoSender == "" && localStorage.getItem("senderName") != null){
+        alert('Anna lähettäjä');
     }
     
-    if((video_id == null || (!weeklyRBtn && !themeRBtn)) || (videoSender == "" && localStorage.getItem("senderName") == null)){
-        alert('Anna youtube link, tyyppi ja lähettäjä');
+    if(video_id == null || (!weeklyRBtn && !themeRBtn)){
+        alert('Anna youtube link tai tyyppi');
     }  
     else{
         var ampersandPosition = video_id.indexOf('&');
@@ -275,7 +274,6 @@ function openAddPlaylist(){
     if(localStorage.getItem("senderName") != null){
         $("#senderName").html(localStorage.getItem("senderName"));
         $("#pickSender").hide();
-        $("#savedSender").show();
     }
     else{
         $("#savedSender").hide();
