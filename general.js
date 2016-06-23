@@ -323,6 +323,7 @@ function getComments(ytid){
     };
 
     xmlhttp.open("POST", "php/getComments.php", true);
+    xmlhttp.setHeader("Access-Control-Allow-Origin", "*");
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);
 }
@@ -341,7 +342,7 @@ function postComment(user, comment, ytid){
     };
 
     xmlhttp.open("POST", "php/postComments.php", true);
-    response.setHeader("Access-Control-Allow-Origin", "*");
+    xmlhttp.setHeader("Access-Control-Allow-Origin", "*");
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xmlhttp.send(params);
 }
