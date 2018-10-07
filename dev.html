@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    <meta name="google-site-verification" content="y4tut-8UvT2kv_KkVGl6RPT2qompwC2oFznzHaGqlX0" />-->
+<!--    <meta name="google-site-verification" content="16rB-Z7RXmRYHpzEfQCOzUhhbj1CFnnYHsnQ3hX75fU" />-->
+    <meta charset="utf-8" />
+    <meta name="author" content="Script Tutorials" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Ultimate Super MegaSuplex OST - Greatest gaming playlist ever</title>
+
+    <!-- add styles and scripts -->
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Changa|Orbitron|PT+Sans+Caption|Questrial|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"     rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.css">
+    
+
+    
+</head>
+<body>
+    
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbarTitle" >ULTIMATE SUPER MEGASUPLEX OST</div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+                <div id="mainAddSong">
+                    <i class="material-icons header-icons" onclick="getAuth()">&#xE03B;</i>
+                    <span class="tooltipPlaylistBtn">Add song</span>
+                </div>
+            </li>
+            <li>
+                <div id="mainShuffle">
+                    <i class="material-icons header-icons" onclick="randomizePlaylist()">&#xE043;</i>
+                    <span class="tooltipPlaylistBtn">Shuffle</span>
+                </div>
+            </li>
+            <li>
+                <div id="mainSlacklist">
+                    <i class="material-icons header-icons" onclick="openSongChecklist()">&#xE065;</i>
+                    <span class="tooltipPlaylistBtn">Slacklist</span>
+                </div>
+            </li>
+              <li>
+                <div id="mainThumblist">
+                    <i class="material-icons header-icons" onclick="getThumbslist()">&#xE8DC;</i>
+                    <span class="tooltipPlaylistBtn">Thumblist</span>
+                </div>
+            </li>
+            <li>
+                <div id="login">
+                    <div id="noLogin" hidden>
+                        <div style="display: inline-block;">
+                            <i class="material-icons header-icons" style="color: #dc4f4f;" onclick="loginOST()">&#xE853;</i>
+                            <span class="tooltipPlaylistBtn">Login</span>
+                        </div>
+                        <div id="loginBox" style="display: inline-block; vertical-align: super;">
+                            <span style="float left; margin: 3px;">Username: </span><input id="user" type="text" name="username" style="height: 13px;"/><br>
+                            <span style="float left; margin: 4px;">Password:  </span><input id="pass" type="text" name="password" style="height: 13px;"/><br>
+                        </div>
+                    </div>
+                    <div id="yesLogin" hidden style="text-align: center;">
+                        <i class="material-icons header-icons" style="color: #4fdc4f; cursor: default;">&#xE853;</i>
+                        <div id="loginWelcome" style="display: inline-block;font-size: 40px; vertical-align: top; display: inline-block;"></div>
+                        
+                    </div>
+                </div>
+            </li>
+          </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <div id="nowPlaying" style="display: inline-block; width: 100%;">
+                        <marquee behavior="scroll" direction="left"><span>Nothing</span></marquee>
+                        <i class="material-icons header-icons" style="margin-left: 0px; cursor: default;">&#xE405;</i>
+                        <span class="tooltipNPBtn">Now playing</span>
+                    </div>
+                </li>
+                <li>
+                    <div id="thumbsUp" class="no-events" onclick="clickPostSongThumbs()" style="margin-left: 20px; min-width: 96px;">
+                        <img id="thumbsUpIcon" width="40px" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                        <img id="thumbsUpAdd" width="24%" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                        <span></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+      </div>
+    </nav>
+    
+    <div id="modalBG" class="overlay"></div>
+    
+    <div id="myAddSong" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content" >
+<!--        <span id="closeAddSong" class="close">×</span>-->
+        <div id="popupContent">
+            Youtube link:
+            <input id="ytLink" type="text" name="ytLink" style="color: black;"><br>
+            Lähettäjä: 
+            <div id="savedSender">
+                <div id="senderName"></div>
+            </div>
+            <br>
+            <input id="weekly" type="radio" name="theme" value="false">
+            <div id="weeklyText">Weekly song<span></span></div><br>
+            <input id="theme" type="radio" name="theme" value="true">
+            <div id="themeText">Theme song<span></span></div><br>
+            <div id="weeklyRandomNumber">This week theme: <span class="tooltiptext">Tooltip text</span></div>
+            <button id="submitYTPLsong" onclick="addSongYTPlaylist()" style="float: right;">Submit</button>
+            <div id="rules" style="text-align: center; width: 100%">
+            <h3>Rules:</h3>
+            - Biisin pituus max n.7min<br>
+            - Vain alkuperäisen OST:n biisit<br>
+            - Soittolistaan sallitaan vain pelien biisit<br>
+            - Samaa biisiä ei saa laittaa kahta kertaa<br>
+            - Käyttäjä ei saa lisätä kuin yhden biisin samasta pelistä kerran kuukaudessa<br>  
+            - Käyttäjä ei saa lisätä kuin kaksi biisiä samasta pelisarjasta kerran kuukaudessa<br>
+            - Käyttäjä lisää kaksi biisiä viikossa, yhden teemabiisin ja yhden vapaavalintaisen biisin<br>
+            - Tarkemmat tiedot teemasta saat siirtämällä hiiren teematekstin päälle<br>
+            
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="mySlackList" class="modal">
+        <div class="modal-content2" >
+<!--            <span id="closeSlack" class="close">×</span>-->
+            <div id="popupChecklist">
+                
+            </div>
+        </div>
+    </div>
+    
+    <div id="thumbList" class="modal">
+        <div class="modal-content3" >
+<!--            <span id="closeThumb" class="close">×</span>-->
+            <div id="popupthumblist">
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="content">
+        
+<!--
+        <div id="YTplaylist">
+        </div>
+-->
+<!--
+        <div id="YTPlayer">
+        <div id="player"></div>
+
+        <div id="lowerContent">
+            <div id="totalThumbsGot">
+                <h3>Eniten peukutettu</h3>
+                <div id= "totalThumbsGotList">
+                </div>
+            </div>
+            <div id="totalThumbsGiven">
+                <h3>Eniten peukuttanut</h3>
+                <div id= "totalThumbsGivenList">
+                </div>
+            </div>
+            <div id="totalThumbs">
+                    
+            </div>
+        </div>
+
+        </div>
+-->
+    </div>
+<!--<div id="spinner" class="background">-->
+<div id="spinner" class="background" style="display: none">
+    <div class="cssload-container">
+        <div class="cssload-shaft1"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft2"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft3"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft4"><img src="img/mush50.png"></div>
+<!--
+        <div class="cssload-shaft5"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft6"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft7"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft8"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft9"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft10"><img src="img/mush50.png"></div>
+-->
+    </div>
+    
+</div>
+
+    
+    
+</body>
+    <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/date-fi-FI.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js"></script>
+    <script type="text/javascript" src="css/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="general.js"></script>
+    
+    <script>
+        checkLogin();
+        //autoUpdateThumbsGiven();
+//        autotest();
+//        getThumbslist();
+//        openSongChecklist();
+//        getYoutubeVideoInfo("omInpgBSYmw");
+//        getUserDisplayName();
+//        getCheckRated("Timo", "86IrPxjnLEA");
+//        postComment();
+//        getComments("86IrPxjnLEA");
+//        addSongYTPlaylist();
+//        getAuth();
+    </script>
+</html>

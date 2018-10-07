@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--    <meta name="google-site-verification" content="y4tut-8UvT2kv_KkVGl6RPT2qompwC2oFznzHaGqlX0" />-->
+<!--    <meta name="google-site-verification" content="16rB-Z7RXmRYHpzEfQCOzUhhbj1CFnnYHsnQ3hX75fU" />-->
+    <meta charset="utf-8" />
+    <meta name="author" content="Script Tutorials" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Ultimate Super MegaSuplex OST - Greatest gaming playlist ever</title>
+
+    <!-- add styles and scripts -->
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Changa|Orbitron|PT+Sans+Caption|Questrial|Roboto+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"     rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/stroll.css">
+    
+
+    
+</head>
+<body>
+    
+    <div id="thumbList" class="modal">
+        <div class="modal-content3" >
+<!--            <span id="closeThumb" class="close">×</span>-->
+<!--
+            <div id="popupthumblist">
+                
+            </div>
+-->
+        </div>
+    </div>
+    
+    
+    <div id="fullcontent">
+        <div id="YTPlayer">
+            <div id="player"></div>
+
+            
+        </div>
+        <div id="nowPlaying">NOTHING
+            </div>
+            
+            
+            <div id="infoTabs">
+                <div class="active" onclick="changeTab(this)" data-tab="playlist">
+                    Playlist
+                </div>
+                <vr></vr>
+                <div onclick="changeTab(this)" data-tab="ratings">
+                    Thumblist
+                </div>
+                <vr></vr>
+                <div onclick="changeTab(this);getThumblist()" data-tab="totalThumbs">
+                    Rankings
+                </div>
+                <vr></vr>
+                <div id="addsongtab" onclick="getAuth();" data-tab="addSong">
+<!--                <div onclick="changeTab(this);" data-tab="addSong">-->
+                    Add song
+                </div>
+                <vr></vr>
+                <div onclick="changeTab(this);openSongChecklist()" data-tab="slackList">
+                    Slacklist
+                </div>
+                <vr></vr>
+                <div onclick="changeTab(this);" data-tab="setting">
+                    Settings
+                </div>
+            </div>
+            <div id="infoWindow">
+                <div id="playlist">
+                    <div id="YTplaylist" class="frame"></div>
+                    <div class="shadow-scrollbar">
+                        <div class='scrollbar'>
+                            <div class='handle'></div>
+                        </div>
+                    
+                    </div>
+                    <div id="actionBar" style="display: flex; padding-top: 20px; padding-bottom: 20px;">
+                        <div id="mainShuffleList">
+                            <i class="material-icons header-icons" onclick="randomizePlaylist()">&#xE043;</i>
+                            <span class="tooltipPlaylistBtn">Add song</span>
+                        </div>
+
+                        <div id="thumbsUp" class="no-events" onclick="clickPostSongThumbs()" style="margin-left: 20px; min-width: 96px;">
+                            <img id="thumbsUpIcon" width="40px" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                            <img id="thumbsUpAdd" width="24%" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                            <span></span>
+                        </div>
+                    </div>
+<!--
+                    <div class="controls center">
+                        <button class="btn prev disabled" disabled=""><i class="icon-chevron-left"></i> prev</button>
+                        <button class="btn next">next <i class="icon-chevron-right"></i></button>
+                    </div>
+-->
+                </div>
+                <div id="ratings" style="display: none;">
+                    <div id="totalThumbsGot">
+                        <h3>Eniten peukutettu</h3>
+                        <div id= "totalThumbsGotList">
+                        </div>
+                    </div>
+                    <div id="totalThumbsGiven">
+                        <h3>Eniten peukuttanut</h3>
+                        <div id= "totalThumbsGivenList">
+                        </div>
+                    </div>
+                </div>
+                <div id="totalThumbs" style="display: none">
+                    <div id="thumblist">
+                        <div id="popupthumblist">
+                        </div>
+                    </div>
+                </div>
+                <div id="slackList">
+                    <div id="popupChecklist">
+                    </div>
+                </div>
+                <div id="addSong" style="display: none">
+                    <div style="width: 49%">
+                        <div>Youtube link:</div>
+                        <div>
+                            <input id="ytLink" type="text" name="ytLink" style="color: black;">
+                        </div>
+                        <div>Lähettäjä: </div>
+                        <div id="savedSender">
+                            <div id="senderName"></div>
+                        </div>
+                        <br>
+                        <div class="theme">
+                            <input id="weekly" type="radio" name="theme" value="false">
+                            <div id="weeklyText">Weekly song<span></span></div><br>
+                            <input id="theme" type="radio" name="theme" value="true">
+                            <div id="themeText">Theme song<span></span></div><br>
+                        </div>
+
+                        <div id="weeklyRandomNumber">This week theme: <br><span class="tooltiptext">Tooltip text</span></div>
+                        <button id="submitYTPLsong" onclick="addSongYTPlaylist()">Submit</button>
+                    </div>
+                    <div id="rules" style="text-align: center; width: 49%">
+                        <h3>Rules:</h3>
+                        - Biisin pituus max n.7min<br>
+                        - Vain alkuperäisen OST:n biisit<br>
+                        - Soittolistaan sallitaan vain pelien biisit<br>
+                        - Samaa biisiä ei saa laittaa kahta kertaa<br>
+                        - Käyttäjä ei saa lisätä kuin yhden biisin samasta pelistä kerran kuukaudessa<br>  
+                        - Käyttäjä ei saa lisätä kuin kaksi biisiä samasta pelisarjasta kerran kuukaudessa<br>
+                        - Käyttäjä lisää kaksi biisiä viikossa, yhden teemabiisin ja yhden vapaavalintaisen biisin<br>
+                        - Tarkemmat tiedot teemasta saat siirtämällä hiiren teematekstin päälle<br>
+                    </div>
+                </div>
+                <div id="setting" style="display: none">
+                    <div style="display: flex;">
+                        <div style="flex: 1; text-align: center;">
+                            <div id="loginBox" style="display: inline-block; vertical-align: super;">
+                                <div class="input-field">
+                                    <span style="float left; margin: 3px;">Username: </span>
+                                    <input id="user" type="text" name="username" />
+                                </div>
+                                <div class="input-field">
+                                    <span style="float left; margin: 4px;">Password:  </span>
+                                    <input id="pass" type="text" name="password" />
+                                </div>
+                        </div>
+                            <hr>
+                        <div class="colorList">
+                            <div class="colorTheme" onclick="changeTheme(this)" 
+                                 data-darkR="127"
+                                 data-darkG="127"
+                                 data-darkB="0"
+                                 data-lightR="255"
+                                 data-lightG="255"
+                                 data-lightB="127"
+                                 style="background: rgb(255, 255, 0);"> 
+                            </div>
+
+                            <div class="colorTheme" onclick="changeTheme(this)" 
+                                 data-darkR="127"
+                                 data-darkG="0"
+                                 data-darkB="0"
+                                 data-lightR="255"
+                                 data-lightG="127"
+                                 data-lightB="127"
+                                 style="background: rgb(255, 0, 0);"> 
+                            </div>
+
+                            <div class="colorTheme" onclick="changeTheme(this)" 
+                                 data-darkR="0"
+                                 data-darkG="0"
+                                 data-darkB="127"
+                                 data-lightR="127"
+                                 data-lightG="127"
+                                 data-lightB="255"
+                                 style="background: rgb(0, 0, 255);"> 
+                            </div>
+
+                            <div class="colorTheme" onclick="changeTheme(this)" 
+                                 data-darkR="0"
+                                 data-darkG="127"
+                                 data-darkB="0"
+                                 data-lightR="127"
+                                 data-lightG="255"
+                                 data-lightB="127"
+                                 style="background: rgb(0, 255, 0);"> 
+                            </div>
+
+                            <div class="colorTheme" onclick="changeTheme(this)" 
+                                 data-darkR="127"
+                                 data-darkG="64"
+                                 data-darkB="0"
+                                 data-lightR="255"
+                                 data-lightG="194"
+                                 data-lightB="127"
+                                 style="background: rgb(255, 128, 0);"> 
+                            </div>
+
+                            <div class="colorTheme" onclick="changeTheme(this)" 
+                                 data-darkR="0"
+                                 data-darkG="127"
+                                 data-darkB="127"
+                                 data-lightR="127"
+                                 data-lightG="255"
+                                 data-lightB="255"
+                                 style="background: rgb(0, 255, 255);"> 
+                            </div>
+
+                            <div class="colorTheme" onclick="changeTheme(this)" 
+                                 data-darkR="127"
+                                 data-darkG="0"
+                                 data-darkB="127"
+                                 data-lightR="255"
+                                 data-lightG="127"
+                                 data-lightB="255"
+                                 style="background: rgb(255, 0, 255);"> 
+                            </div>
+
+                            
+                        </div>
+                        <div class="colorList">
+                            <div class="colorTheme" onclick="changeBodyBG('white')" style="background: rgb(255, 255, 255);"> </div>
+                            <div class="colorTheme" onclick="changeBodyBG('black')" style="background: rgb(0, 0, 0);"> </div>
+                        </div>
+                            
+                        </div>
+                        <div id="rules" style="text-align: center; flex: 1;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    </div>
+<!--<div id="spinner" class="background">-->
+<div id="spinner" class="background" style="display: none">
+    <div class="cssload-container">
+        <div class="cssload-shaft1"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft2"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft3"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft4"><img src="img/mush50.png"></div>
+<!--
+        <div class="cssload-shaft5"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft6"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft7"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft8"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft9"><img src="img/mush50.png"></div>
+        <div class="cssload-shaft10"><img src="img/mush50.png"></div>
+-->
+    </div>
+    
+</div>
+
+    
+    
+</body>
+    <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="js/jquery.floatThead.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="js/date-fi-FI.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js"></script>
+    <script type="text/javascript" src="css/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<!--        <script type="text/javascript" src="js/sly.min.js"></script>-->
+        <script type="text/javascript" src="js/sly.js"></script>
+<!--        <script type="text/javascript" src="js/stroll.js"></script>-->
+
+    <script type="text/javascript" src="general.js"></script>
+    
+    <script type="text/javascript">
+        checkLogin();
+        autoHeightYTPlayer();
+//        changeBodyBG("black");
+        //autoUpdateThumbsGiven();
+//        autotest();
+//        getThumbslist();
+//        openSongChecklist();
+//        getYoutubeVideoInfo("omInpgBSYmw");
+//        getUserDisplayName();
+//        getCheckRated("Timo", "86IrPxjnLEA");
+//        postComment();
+//        getComments("86IrPxjnLEA");
+//        addSongYTPlaylist();
+//        getAuth();
+    </script>
+</html>
